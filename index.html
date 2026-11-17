@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Relatorio do primeiro mes de campanha do Checklist Guiado do MEI.">
+<style>
+  :root { color-scheme: light; padding-top: env(safe-area-inset-top,0px); padding-bottom: env(safe-area-inset-bottom,0px); }
+  html { scroll-padding-top: env(safe-area-inset-top,0px); }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<title>Checklist MEI — Primeiro mês</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  /* Leitura em voz alta: tudo normalizado para "a cada 100 pessoas", poucas caixas, muito respiro */
+  :root {
+    --paper:   #F7F6F2;
+    --ink:     #1B2420;
+    --soft:    #5A645D;
+    --faint:   #949C96;
+    --rule:    #E2E0D7;
+    --green:   #16624F;
+    --green-s: #DCEBE4;
+    --on-green:#FFFFFF;
+    --red:     #A8422F;
+    --red-s:   #F7E7E2;
+    --display: "Newsreader", Georgia, serif;
+    --body:    "IBM Plex Sans", system-ui, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #121714; --ink: #E9ECE8; --soft: #A9B2AC; --faint: #78827C;
+      --rule: #29312C; --green: #5ECBA4; --green-s: #1B2A25;
+      --on-green: #0E1512;
+      --red: #E8907D; --red-s: #2E1D19;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #121714; --ink: #E9ECE8; --soft: #A9B2AC; --faint: #78827C;
+    --rule: #29312C; --green: #5ECBA4; --green-s: #1B2A25;
+    --on-green: #0E1512;
+    --red: #E8907D; --red-s: #2E1D19;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--body); font-size: 17px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 760px; margin: 0 auto;
+    padding-block: 56px 90px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: flex; flex-direction: column; gap: 60px;
+  }
+
+  /* abertura */
+  .open { display: flex; flex-direction: column; gap: 16px; }
+  .kicker {
+    font-size: 13px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--green);
+  }
+  h1 {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(2.1rem, 6vw, 3rem);
+    line-height: 1.05; letter-spacing: -.02em; margin: 0; text-wrap: balance;
+  }
+  .lead { margin: 0; font-size: 1.15rem; color: var(--soft); max-width: 36ch; }
+
+  h2 {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(1.5rem, 4vw, 1.9rem);
+    line-height: 1.15; margin: 0 0 22px; text-wrap: balance;
+  }
+
+  section { display: flex; flex-direction: column; }
+
+  /* funil de 100 */
+  .f100 { display: flex; flex-direction: column; gap: 3px; }
+  .f {
+    display: grid; grid-template-columns: 1fr 44px;
+    align-items: center; gap: 14px; min-width: 0;
+  }
+  .f .fill {
+    height: 46px; border-radius: 4px; background: var(--green);
+    display: flex; align-items: center; padding-left: 14px;
+    color: var(--on-green); font-weight: 500; font-size: 15px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    min-width: 0;
+  }
+  .f .fill.pale { background: color-mix(in srgb, var(--green) 55%, transparent); }
+  .f .fill.zero {
+    background: var(--red-s); color: var(--red); font-weight: 600;
+    border: 1.5px dashed var(--red); padding-left: 12px;
+  }
+  .f .n {
+    font-family: var(--display); font-size: 1.5rem; font-weight: 600;
+    text-align: right; font-variant-numeric: tabular-nums;
+  }
+  .f .n.zero { color: var(--red); }
+
+  .caption { margin: 18px 0 0; color: var(--soft); font-size: 15.5px; }
+
+  /* lista simples com marcador verde */
+  ul.plain { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  ul.plain li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; }
+  ul.plain li::before {
+    content: "✓"; color: var(--green); font-weight: 700; font-size: 17px; line-height: 1.5;
+  }
+  ul.plain b { display: block; }
+  ul.plain span { color: var(--soft); font-size: 15.5px; }
+
+  /* números grandes em linha */
+  .facts { display: flex; flex-direction: column; gap: 26px; }
+  .fact { display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: baseline; }
+  .fact .big {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(2.4rem, 8vw, 3.4rem); line-height: .95;
+    color: var(--green); text-align: right; font-variant-numeric: tabular-nums;
+  }
+  .fact p { margin: 0; font-size: 1.05rem; }
+  .fact small { display: block; color: var(--faint); font-size: 14px; margin-top: 4px; }
+  @media (max-width: 520px) {
+    .fact { grid-template-columns: 1fr; gap: 2px; }
+    .fact .big { text-align: left; }
+  }
+
+  /* comparação de duas barras */
+  .vs { display: flex; flex-direction: column; gap: 18px; margin-top: 4px; }
+  .vsrow { display: flex; flex-direction: column; gap: 7px; }
+  .vstop { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 15.5px; }
+  .vstop b { font-weight: 600; }
+  .vstop i { font-style: normal; font-weight: 600; font-family: var(--display); font-size: 1.2rem; }
+  .vstrack { height: 14px; background: var(--green-s); border-radius: 7px; overflow: hidden; }
+  .vsfill { height: 100%; background: var(--green); border-radius: 7px; }
+
+  /* frase de destaque */
+  .punch {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+    line-height: 1.25; margin: 0;
+    border-left: 4px solid var(--green); padding-left: 22px;
+    text-wrap: balance;
+  }
+
+  /* plano */
+  ol.plan { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 26px; counter-reset: p; }
+  ol.plan li { display: grid; grid-template-columns: 38px 1fr; gap: 16px; align-items: start; counter-increment: p; }
+  ol.plan li::before {
+    content: counter(p);
+    font-family: var(--display); font-size: 1.4rem; font-weight: 600;
+    color: var(--green); background: var(--green-s);
+    width: 38px; height: 38px; border-radius: 50%;
+    display: grid; place-items: center;
+  }
+  ol.plan b { display: block; font-size: 1.1rem; margin-bottom: 3px; }
+  ol.plan span { color: var(--soft); font-size: 15.5px; }
+
+  .closing {
+    border-top: 1px solid var(--rule); padding-top: 26px;
+    color: var(--soft); font-size: 15.5px;
+  }
+  .closing b { color: var(--ink); }
+
+  footer {
+    border-top: 1px solid var(--rule); padding-top: 20px;
+    font-size: 13px; color: var(--faint);
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="open">
+    <span class="kicker">Checklist Guiado do MEI · Primeiro mês</span>
+    <h1>Gastamos R$ 556 e descobrimos uma coisa importante</h1>
+    <p class="lead">Em 30 dias de anúncio, de 17 de outubro a 15 de novembro.</p>
+  </div>
+
+  <section>
+    <h2>A cada 100 pessoas que clicam no anúncio</h2>
+
+    <div class="f100">
+      <div class="f">
+        <div class="fill" style="width: 100%">clicam no anúncio</div>
+        <span class="n">100</span>
+      </div>
+      <div class="f">
+        <div class="fill" style="width: 81%">abrem o quiz</div>
+        <span class="n">81</span>
+      </div>
+      <div class="f">
+        <div class="fill" style="width: 67%">começam a responder</div>
+        <span class="n">67</span>
+      </div>
+      <div class="f">
+        <div class="fill" style="width: 50%">respondem até o fim</div>
+        <span class="n">50</span>
+      </div>
+      <div class="f">
+        <div class="fill pale" style="width: 16%">querem comprar</div>
+        <span class="n">16</span>
+      </div>
+      <div class="f">
+        <div class="fill pale" style="width: 13%">abrem a página de pagamento</div>
+        <span class="n">13</span>
+      </div>
+      <div class="f">
+        <div class="fill zero" style="width: 46%">pagam</div>
+        <span class="n zero">0</span>
+      </div>
+    </div>
+
+    <p class="caption">
+      Metade das pessoas responde o quiz inteiro. Uma em cada seis chega a clicar
+      no botão de comprar. E aí, na hora de pagar, todo mundo para.
+    </p>
+  </section>
+
+  <section>
+    <h2>Antes de falar do zero, o que já funciona</h2>
+    <ul class="plain">
+      <li>
+        <div>
+          <b>O anúncio funciona melhor que a média do mercado</b>
+          <span>A própria Meta compara nossa campanha com empresas parecidas. Estamos acima da média em quantas pessoas veem e em quantas clicam.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <b>O quiz prende as pessoas</b>
+          <span>De cada 10 que começam a responder, 7 vão até o fim. É muito alto para quem nunca ouviu falar da gente.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <b>O pagamento está funcionando</b>
+          <span>Fizemos uma compra de teste. Deu certo, o dinheiro entrou e o sistema registrou. Não tem nada quebrado.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <b>Ficou mais barato com o tempo</b>
+          <span>O custo para aparecer para mil pessoas caiu de R$ 46 para R$ 34 ao longo do mês.</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Então por que ninguém comprou?</h2>
+    <p class="caption" style="margin: 0 0 30px">
+      A resposta estava nas próprias respostas do quiz. Olha quem está do outro lado:
+    </p>
+
+    <div class="facts">
+      <div class="fact">
+        <span class="big">4 de 10</span>
+        <p>
+          já sabem exatamente quanto faturaram no ano
+          <small>responderam "sei o valor exato, controlo mês a mês"</small>
+        </p>
+      </div>
+      <div class="fact">
+        <span class="big">5 de 10</span>
+        <p>
+          já sabem o que estão pagando no DAS
+          <small>responderam "sei: é imposto mais INSS"</small>
+        </p>
+      </div>
+      <div class="fact">
+        <span class="big">6 de 10</span>
+        <p>
+          dizem que pagam tudo e só não têm certeza se está certo
+          <small>é o resultado de menor urgência do quiz</small>
+        </p>
+      </div>
+    </div>
+
+    <p class="punch" style="margin-top: 38px">
+      O anúncio está trazendo o MEI que já está organizado. Ele faz o quiz por
+      curiosidade, descobre que está indo bem — e não compra, porque não tem
+      problema para resolver.
+    </p>
+  </section>
+
+  <section>
+    <h2>E tem uma prova disso</h2>
+    <p class="caption" style="margin: 0 0 24px">
+      Comparamos quem admitiu ter conta atrasada com quem disse que está em dia.
+      De cada 100 pessoas de cada grupo, quantas clicaram para comprar:
+    </p>
+
+    <div class="vs">
+      <div class="vsrow">
+        <div class="vstop"><b>Quem tem coisa atrasada</b> <i>36</i></div>
+        <div class="vstrack"><div class="vsfill" style="width: 36%"></div></div>
+      </div>
+      <div class="vsrow">
+        <div class="vstop"><b>Quem diz que está em dia</b> <i>31</i></div>
+        <div class="vstrack"><div class="vsfill" style="width: 31%"></div></div>
+      </div>
+    </div>
+
+    <p class="caption">
+      Praticamente igual. Se o quiz estivesse convencendo de verdade, quem tem
+      problema clicaria muito mais do que quem não tem. Como não acontece, quer
+      dizer que estão clicando por curiosidade — e curiosidade não paga boleto.
+    </p>
+  </section>
+
+  <section>
+    <h2>A conclusão</h2>
+    <p class="punch">
+      Não descobrimos que o produto não vende. Descobrimos que estamos falando
+      com quem não precisa dele.
+    </p>
+    <p class="caption">
+      Isso custou R$ 556 e um mês — com o anúncio, o quiz e o pagamento todos
+      testados e aprovados no caminho. É barato para uma descoberta dessas.
+    </p>
+  </section>
+
+  <section>
+    <h2>O que vamos fazer agora</h2>
+    <ol class="plan">
+      <li>
+        <div>
+          <b>Falar com quem tem problema</b>
+          <span>Hoje o anúncio convida a "ver se está tudo em dia" — e quem acha que está é quem clica. Vamos falar direto com quem já sabe que tem conta atrasada ou declaração sem entregar.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <b>Mudar a tela que mais aparece</b>
+          <span>Seis em cada dez caem na mesma tela de resultado, e ela hoje tranquiliza em vez de mostrar o que está faltando.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <b>Pedir o contato no quiz</b>
+          <span>194 pessoas responderam e não conseguimos falar com nenhuma. Com e-mail e WhatsApp, a venda pode acontecer depois, e não só naquele minuto.</span>
+        </div>
+      </li>
+    </ol>
+
+    <p class="closing" style="margin-top: 34px">
+      <b>O orçamento fica como está</b> durante esse teste. Só aumenta depois da
+      primeira venda com o público certo.
+    </p>
+  </section>
+
+  <footer>
+    Dados do Gerenciador de Anúncios da Meta, do Inlead e da Kiwify · 17 de outubro a 15 de novembro de 2026
+  </footer>
+
+</div>
+
+</body>
+</html>
